@@ -6,7 +6,7 @@ export default function Home() {
           Flight Log &amp; Fare Finder
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          Phase 1: skeleton deployed ✓
+          Phase 1: skeleton deployed ✓ (auto-deploy verified)
         </p>
       </main>
     </div>
