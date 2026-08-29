@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flight Log & Fare Finder
 
-## Getting Started
+A personal flight log and fare finder web app, built as a learning project for
+TypeScript, frontend development, and AI-assisted development. It will
+eventually support fare search, a Postgres-backed flight log, a color-coded
+map of past flights, natural-language search, and a shared map with friends.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # production build
+npm run start   # run the production build locally
+npm run lint    # lint with ESLint
+npm run format  # format with Prettier
+```
 
-## Learn More
+## Roadmap
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] Phase 1 — Skeleton + CI/CD to Vercel
+- [ ] Phase 2 — Postgres + Prisma; personal flight log (users, trips, flights, airlines)
+- [ ] Phase 3 — Color-coded flight map (deck.gl or globe.gl)
+- [ ] Phase 4 — Fare search via Duffel sandbox, behind one `flights` module; store fare snapshots
+- [ ] Phase 5 — Natural-language flight search (Anthropic API tool use)
+- [ ] Phase 6 — Auth (Clerk) + shared map with per-person filters
