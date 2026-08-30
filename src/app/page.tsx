@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -8,6 +10,12 @@ export default function Home() {
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
           Phase 1: skeleton deployed ✓ (auto-deploy verified)
         </p>
+        <Link
+          href="/flights"
+          className="text-sm font-medium underline text-black dark:text-zinc-50"
+        >
+          View flight log →
+        </Link>
       </main>
     </div>
   );
