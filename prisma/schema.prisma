@@ -16,6 +16,11 @@ model User {
   name      String?
   createdAt DateTime @default(now())
 
+  // Clerk owns identity; this is our local mirror of it. Nullable because the
+  // pre-Clerk seeded user has no Clerk account yet — it gets linked by email
+  // the first time that person signs in. See src/lib/user.ts.
+  clerkId String? @unique
+
   trips Trip[]
 }
 

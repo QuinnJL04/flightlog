@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Registering it here is what creates the `font-board` Tailwind utility. */
+  --font-board: var(--font-departure);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +24,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Was hardcoded to Arial by the Next.js starter, which silently overrode the
+     Geist font loaded in layout.tsx. Point it at the real variable instead. */
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
