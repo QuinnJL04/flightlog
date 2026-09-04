@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# local learning notes (untracked on purpose)
+/HANDOFF.md
+/LEARNING_PLAN.md
+/.learning/

@@ -19,7 +19,9 @@ declare global {
 function resolveConnectionString() {
   const url = process.env.DATABASE_URL;
   if (!url) {
-    throw new Error("DATABASE_URL is not set. Run `vercel env pull .env.local`.");
+    throw new Error(
+      "DATABASE_URL is not set. Run `vercel env pull .env.local`.",
+    );
   }
   return url.replace(/([?&]sslmode=)require\b/, "$1verify-full");
 }

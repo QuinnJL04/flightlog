@@ -16,12 +16,35 @@ model User {
   name      String?
   createdAt DateTime @default(now())
 
-  // Clerk owns identity; this is our local mirror of it. Nullable because the
-  // pre-Clerk seeded user has no Clerk account yet — it gets linked by email
-  // the first time that person signs in. See src/lib/user.ts.
-  clerkId String? @unique
+  // scrypt hash of the user's password, in the format produced by
+  // src/lib/password.ts. Nullable because the seeded user predates passwords —
+  // a null hash means "this account cannot be signed into", never "any
+  // password works". verifyPassword() enforces that.
+  passwordHash String?
 
-  trips Trip[]
+  trips    Trip[]
+  sessions Session[]
+}
+
+// One row per active login. Deleting a row logs that device out immediately,
+// which is the main thing you get from database sessions over a signed cookie:
+// revocation. A stateless JWT stays valid until it expires no matter what.
+model Session {
+  id String @id @default(cuid())
+
+  // SHA-256 of the token we put in the cookie — never the token itself. If
+  // this table leaks, the hashes are useless for logging in, because the
+  // lookup hashes the incoming cookie and compares. Same reasoning as
+  // passwords, minus the need for a slow hash: the token is 256 random bits,
+  // so there is no dictionary to attack.
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Trip {

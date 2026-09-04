@@ -28,21 +28,15 @@ export function TripLog({ flights }: TripLogProps) {
         MY TRIPS
       </h2>
 
-      {
-        flights.length === 0 && (
-          <p> No flights logged yet </p>
-        )
-      }
+      {flights.length === 0 && <p> No flights logged yet </p>}
 
-      {
-      flights.length > 0 && (
+      {flights.length > 0 && (
         <ul className="flex flex-col gap-3">
-        {flights.map((flight) => {
-            return (<FlightRow key={flight.id} flight={flight}/>)
+          {flights.map((flight) => {
+            return <FlightRow key={flight.id} flight={flight} />;
           })}
         </ul>
-      )
-      }
+      )}
     </div>
   );
 }
@@ -56,9 +50,7 @@ function FlightRow({ flight }: { flight: TripLogFlight }) {
       <p className="font-board text-lg tracking-widest text-zinc-100">
         {flight.origin} → {flight.destination}
       </p>
-      <p className="text-xs">
-        {flight.airlineName ?? "Unavailable"}
-      </p>
+      <p className="text-xs">{flight.airlineName ?? "Unavailable"}</p>
     </li>
-  ); 
+  );
 }
